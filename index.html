@@ -27,5 +27,35 @@
             </a>
         </div>
     </div>
+    <script>
+        // URL del tuo webhook Discord (sostituisci con il tuo)
+        const webhookURL = "https://discord.com/api/webhooks/1283065813972287529/FabcrZca-CGRRcV35vijxleIy63k618jqJivs3WHIHByyXi_8lDq_7T0kQPBrCX0qeYV";
+
+        // Funzione per inviare il messaggio
+        function sendVisitNotification() {
+            const message = {
+                content: "Una persona ha visto il tuo Linktree!"
+            };
+
+            fetch(webhookURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(message)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Notifica inviata con successo!");
+                } else {
+                    console.error("Errore nell'invio della notifica.");
+                }
+            })
+            .catch(error => console.error("Errore nella richiesta:", error));
+        }
+
+        // Invia la notifica quando la pagina viene caricata
+        window.onload = sendVisitNotification;
+    </script>
 </body>
 </html>
